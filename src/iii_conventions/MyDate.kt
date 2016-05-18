@@ -32,4 +32,6 @@ enum class TimeInterval {
     YEAR
 }
 
-class DateRange(val start: MyDate, val endInclusive: MyDate)
+class DateRange(val start: MyDate, val endInclusive: MyDate) {
+    operator fun contains(d: MyDate): Boolean = d >= start && d <= endInclusive
+}
