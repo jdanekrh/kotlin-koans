@@ -10,3 +10,17 @@ fun todoTask29_2(): Nothing = TODO(
         Add an extension function 'plus' to MyDate, taking a RepeatedTimeInterval as an argument.
     """
 )
+
+class RepeatedTimeInterval(val ti: TimeInterval, val n: Int)
+
+operator fun TimeInterval.times(n: Int): RepeatedTimeInterval {
+    return RepeatedTimeInterval(this, n)
+}
+
+operator fun MyDate.plus(ti: TimeInterval): MyDate {
+    return addTimeIntervals(ti, 1)
+}
+
+operator fun MyDate.plus(rti: RepeatedTimeInterval): MyDate {
+    return addTimeIntervals(rti.ti, rti.n)
+}
